@@ -1,0 +1,37 @@
+.uppercase {
+	text-transform: uppercase;
+}
+input[type=text]:focus {
+    border-color: none;
+}
+
+input[type=text] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    margin-left: 20%;
+}
+
+.btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+h1 {
+    text-align: center;
+    color:darkorchid;
+    margin-top: 10%;
+}
+
+li {
+    margin-left: 20%;
+    font-size: large;
+    font-style: italic;
+    color: darkviolet;
+}
