@@ -35,3 +35,12 @@ li {
     font-style: italic;
     color: darkviolet;
 }
+
+#done {
+    margin-left: 59%;
+    border-radius: 50%;
+}
+
+#done:hover {
+    background-color: gray;
+}

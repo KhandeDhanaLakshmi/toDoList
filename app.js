@@ -1,5 +1,26 @@
 const addBtn = document.getElementsByClassName("btn")[0];
 
+function createToDoListItem(todoName) {
+    //creating list item to append to ul of todoList
+    const li = document.createElement('li');
+    li.classList.add("list-group-item")
+    //creating TextNode with user input as text
+    const taskTextNode = document.createTextNode(todoName);
+    li.appendChild(taskTextNode);
+    return li;
+}
+
+function createDoneButton(li) {
+    const doneBtn = document.createElement('button');
+    doneBtn.setAttribute('id', 'done');
+    doneBtn.setAttribute('type','submit');
+    doneBtn.innerHTML = "&#10003";
+    doneBtn.style.color = "white";
+    doneBtn.classList.add('btn');
+    doneBtn.addEventListener('click',removeToDoListItem);
+    return doneBtn;
+}
+
 //checks if input is already in todo list
 function checkIfTaskIsUnique(event, taskName) {
     const listItems = document.getElementsByClassName("list-group-item");
@@ -23,15 +44,13 @@ function createTodoListItem(event) {
     }
     if(checkIfTaskIsUnique(event, taskInput)) {
         const todolist = document.getElementById("todolist");
-        //creating list item to append to ul of todoList
-        const li = document.createElement('li');
-        li.classList.add("list-group-item")
-        
-        //creating TextNode with user input as text
-        const taskTextNode = document.createTextNode(taskInput);
-        li.appendChild(taskTextNode);
-        
+        //creating todo list item
+        const li = createToDoListItem(taskInput);
+        //creating button to each ListItem
+        const doneBtn = createDoneButton(li);
+        li.appendChild(doneBtn);
         todolist.appendChild(li);
+        //console.log(li);
         document.getElementById('toDotask').value = "";
     }
     else {
@@ -40,14 +59,10 @@ function createTodoListItem(event) {
     
 }
 
+function removeToDoListItem() {
+    (document.getElementById('todolist')).removeChild(this.parentElement);
+}
+
 addBtn.addEventListener('click', createTodoListItem,false);
 
 
-// document.getElementById("toDotask").addEventListener('onchange', () => {
-//     if(document.getElementById("toDotask").value) {
-//         addBtn.setAttribute('disabled', false);
-//     }
-//     else {
-//         addBtn.setAttribute('disabled',true);
-//     }
-// })
